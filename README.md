@@ -37,14 +37,14 @@ Notice that the mask values are registered as a buffer so they are not considere
 Here in this project we used Multi head attention instead of using  a single one. In the code it is defined by MultiHeadAttention class.
 
 
-###Notice1:
+### Notice 1:
 In the case of any deep networks, we probably face optimization issues  (or let's say vanishing gradient issue). To overcome this problem, in the model we added some skip connections (it is sometimes called residual pathways ) to help the model with finding better optimal points. This idea was borrowed from  the paper "deep residual learning for image recognition".
 
-###Notice2:
+### Notice 2:
 Like other deep learning models, we need to normalize data before and after each attention block. Therefore, in the model, Layer Normalization is applied according to the paper 'Attention Is All You Need'.
 
 
-###Notice3:
+### Notice 3:
 This project is developed based on character-level input which is somehow not perfectly suitable for sentence generation. Later, it can be improved by a word-level dictionary, which can possibly boost the performance of the generatin text. Also, it can be developed as a machine translation by adding an encoder and also cross-attention in the decoder.
 
 
