@@ -12,7 +12,7 @@ The model is defined by calling 'GPTLanguageModel()' from 'model.py'
 
 The overall framework of the model is represented as follows:
 
-
+![My Image](Overall.PNG) 
 
 
 The input is a chunk of sequential words coming from the dataset, and the model will predict the next comming words.
