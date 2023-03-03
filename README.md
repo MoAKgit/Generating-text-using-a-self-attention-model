@@ -50,3 +50,9 @@ Like other deep learning models, we need to normalize data before and after each
 This project is developed based on character-level input which is somehow not perfectly suitable for sentence generation. Later, it can be improved by a word-level dictionary, which can possibly boost the performance of the generatin text. Also, it can be developed as a machine translation by adding an encoder and also cross-attention in the decoder.
 
 
+### This implementation is highly borrowed from the link below:
+
+https://colab.research.google.com/drive/1JMLa53HDuA-i7ZBmqV7ZnA3c_fvtXnx-?usp=sharing
+
+
+
