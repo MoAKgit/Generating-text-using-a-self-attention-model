@@ -1,6 +1,8 @@
 
 # Generating text using a self-attention model.
 
+This is a Pytorch implementation of the text generating using the self-attention model. I trained the  model on GPU Geforce 3090.
+
 In this project, I am going to represent a simple character level attention based decoder for randomly generating reasonably meaningful text.
 
 The first step is to provide a dataset. A simple dataset has been provided as a text file in the repository. we divide the dataset into train and validation.
