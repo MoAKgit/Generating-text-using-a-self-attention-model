@@ -1,5 +1,5 @@
 
-# Generating text using a self-attention model.
+# Text generating using a self-attention model.
 
 This is a Pytorch implementation of the text generating using the self-attention model. I trained the  model on GPU Geforce 3090.
 
