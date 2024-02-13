@@ -1,16 +1,18 @@
 
-# Text generating using a self-attention model.
+# PyTorch Self-Attention Text Generation.
 
-This is a PyTorch implementation of the text generating using the self-attention model. I trained the model on GPU Geforce 3090.
+This repository contains a PyTorch implementation of text generation using the self-attention mechanism. The model is trained on an NVIDIA GeForce RTX 3090 GPU.
 
-In this project, I am going to represent a simple character-level attention-based decoder for randomly generating reasonably meaningful text.
+## Overview
+In this project, we present a simple character-level attention-based decoder for generating reasonably meaningful text.
 
-The first step is to provide a dataset. A simple dataset has been provided as a text file in the repository. We divide the dataset into train and validation.
+## Dataset
+The dataset for training and validation is provided as a text file in the repository. We divide the dataset into training and validation sets.
 
+To facilitate loading data in batches during training, we have implemented a function called get_batch in utils.py.
 
-As we are not going to train the model on the entire dataset, there is a function called 'get_batch' available in utils.py that enables us to load a chunk of data from the dataset.
-
-The model is defined by calling 'GPTLanguageModel()' from 'model.py'
+## Model
+The model architecture is defined in model.py, where we instantiate the GPTLanguageModel().
 
 The overall framework of the model is represented as follows:
 
@@ -23,21 +25,13 @@ The self-attention block emits two vectors for each input, including Queries and
 The query vector represents what the input vector is looking for  
 The key vector denotes what the input vector contains.
 
-Self-attention works in a way that it gives a high-value output when the query and key are aligned.
+The input to the model is a chunk of sequential words from the dataset, and the model predicts the next words in the sequence.
 
+The self-attention block in the model emits two vectors for each input: Queries and Keys. The query vector represents what the input vector is looking for, while the key vector denotes what the input vector contains. Self-attention works by giving a high-value output when the query and key are aligned.
 
-The output of the dot product of Query and Key is called the affinity matrix.
+The output of the dot product of Query and Key is called the affinity matrix. This matrix is then passed through a softmax function and multiplied by Values. In this project, we use Multi-head attention instead of a single attention mechanism, allowing the model to learn different relationships between words.
 
-We pass the affinity matrix through a Softmax function and do a dot product with Values ( Like Queries and Keys, Values are also a projection of input X).
-
-In each individual Attention block, we used a mask in the case of each token communicating with itself and past tokens only. So in this project, it is quite rational to have this masking here.
-
-
-Notice that the mask values are registered as a buffer, so they are not considered as trainable parameters in the optimizer.
-
-
-Here in this project, we used Multi-head attention instead of using a single one which is defined by MultiHeadAttention class.
-
+## Implementation Details
 
 ### Notice 1:
 In the case of any deep networks, we probably face optimization issues  (or let's say, vanishing gradient issues). To overcome this problem, in the model, we added some skip connections (it is sometimes called residual pathways ) to help the model with finding better optimal points. This idea was borrowed from the paper "deep residual learning for image recognition".
@@ -49,8 +43,9 @@ Like other deep learning models, we need to normalize data before and after each
 ### Notice 3:
 This project is developed based on character-level input, which is somehow not perfectly suitable for sentence generation. Later, it can be improved by a word-level dictionary, which can possibly boost the performance of the text generating. Also, it can be developed as a machine translation by adding an encoder and also cross-attention in the decoder.
 
+## Acknowledgment
 
-### This implementation is highly borrowed from the link below:
+This implementation is adapted from the following source:
 
 https://colab.research.google.com/drive/1JMLa53HDuA-i7ZBmqV7ZnA3c_fvtXnx-?usp=sharing
 
